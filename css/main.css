@@ -1,0 +1,56 @@
+body {
+  padding:0;
+  color:white;
+  font: 14px 'Verdana', sans-serif;
+  background-color:#232733;
+}
+
+.container {
+  margin:0 auto;
+  text-align: center;
+}
+
+.container-flex {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.character-creation-box {
+  box-sizing: border-box;
+  max-width: 20%;
+  margin:20px auto 0;
+}
+
+.story-box {
+  box-sizing: border-box;
+  max-width: 50%;
+}
+
+.npc-bar {
+  box-sizing: border-box;
+  max-width: 20%;
+}
+
+.invis {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:active {
+  transform: translateY(2px);
+}
+
+#start {
+  margin-top:50px;
+}
+
+
+#story-text {
+  line-height:20px;
+}

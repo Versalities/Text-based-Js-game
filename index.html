@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta description="Text-based RPG">
+  <title>The daring tale of the (un)lucky Hero!</title>
+  <link rel="stylesheet" href="css/main.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="character-creation-box"> <!-- Бокс для создания героя -->
+      <div class="img-box">
+        <img src="img/kn-superb.jpg" width="200px" height="200px">
+      </div>
+      <div class="stats-box">
+        <!-- Див с основными характеристиками персонажа -->
+        <h3>Character Stats</h3>
+        STR - <span id="str-roll">C</span><br>
+        SPD - <span id="spd-roll">C</span><br>
+        CON - <span id="con-roll">C</span><br>
+        LCK - <span id="lck-roll">C</span><br>
+      </div>
+      <div class="char-summary">
+        <!-- Див с кратким описанием персонажа -->
+        <p>A mysterious nameless knight said to be <span id="str-sum">so weak it hurts</span>
+        yet <span id="spd-sum">slow as a tortoise</span>, with a sturdiness of
+        <span id="con-sum">petit and delicate flower</span> whose fate is said to be
+        <span id="lck-sum">cursed and doomed by the Heaven.</span>
+        </p>
+      </div>
+      <button id="roll">Roll Your Character!</button> <!-- Roll btn -->
+    </div>
+    <button id="start" class ="invis">Start Your Journey!</button> <!-- Start btn -->
+    <div class="story-box invis"> <!-- Бокс для истории -->
+      <img src="img/HomeIn.jpg" id="story-image" alt="">
+      <p id="story-text">It was a lonely friday evening and all what you've been
+        doing is sitting on the sofa and piercing the ceiling with your gaze,
+      waiting for some interesting things to happen. And guess what ? It did happen! <br>
+
+      "THUD THUD THUD THUD!"<br>
+
+      A vicious knock-knock barage was going rampant on your door and you thought
+      that it's in your best interests to look who is been yearning for your attention
+      so late in the evening. Maybe it's something serious, maybe not so much,
+      but for certain, you'll save your door at least.<br>
+      <i> ~ For the course of the story you will be given choices to act based on your
+      stats which will ultimately determine how is your adventure will procede.<br>
+      Just kidding.<br>
+      The story is linear and some things and overall flavor will change depending of your stats, but not so much.<br>
+      At least in this version.<br>
+      So, sit back, relax and have some fun.<br>
+      And remember, Luck is the greatest of skills~</i>
+     </p>
+     <button class="move-btn">Next</button>
+    </div>
+    <div class="npc-bar invis"> <!-- Бокс для других персонажей -->
+      <div class="img-box">
+        <img src="img/blankk.jpg" id="npc-image" width="200px" height="200px">
+      </div>
+      <div class="stats-box">
+        <!-- Див с основными характеристиками персонажа -->
+        <h3>Character Stats</h3>
+        STR - <span id="npc-str">?</span><br>
+        SPD - <span id="npc-spd">?</span><br>
+        CON - <span id="npc-con">?</span><br>
+        LCK - <span id="npc-lck">?</span><br>
+      </div>
+      <div class="char-summary">
+        <!-- Див с кратким описанием персонажа -->
+        <p id="npc-summary">NPC Summary will be written here, when it appears and engages you</span>
+        </p>
+      </div>
+    </div>
+  </div>
+  <script src="js/mainScript.js"></script>
+</body>
+</html>
