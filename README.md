@@ -7,3 +7,5 @@ totaly not dry at all :-D But whatever, i'll sharpen it later, right now i just 
 Version 0.1 - 31.08.2016.
 Character creation and 1st event are completed. Need some additional styling at the very least though, but anyway, content is operational.
 
+Version 0.15 - 01.09.2016.
+Added 2nd event and 1/3 of the third. Almost done with the initially planned content.
