@@ -184,11 +184,105 @@ function GameStart() {
          the King's letter, which signifies the official will of the Throne on this matter.<br>\
          Well, better get moving then.");
       }
-      $('.move-btn').removeClass('move-btn').addClass('move-btn1');
+      $('.move-btn').unbind().removeClass('move-btn').addClass('move-btn1');
       $('.move-btn1').click(secondEvent);
-    }
-    function secondEvent() {
-     $('#story-text').html("To be continiued....stay tuned")
-     $('#story-image').attr("src", "img/wuc.jpeg");
-    }
+    };
+// Второй ивент
+  function secondEvent() {
+    //Первая страница
+    $('#story-image').attr("src", "img/DesertPath.jpg");
+    $('#story-text').html("It took a while for you to gather all the needed supplies for\
+    your journey: weapons, potions, last-will-testament and some other things. In the end\
+    you were able finally leave the town two days later and in the course of this days\
+    you, somehow, managed to befriend the obnoxious city guard, whose given name is Iocari,\
+    and who is happily strolling along side you.<br>\
+    'There is nothing more fulfiling in life than pursuing the noble goal! Acts of virtue, courage, selfnesness -\
+     only this actions can make a man feel alive!'<br>\
+     <i>You're beginning to think, that this man was kidnapped in his childhood and then brainwashed into this\
+    zealous goody two shoes go-getter, but unfortunately, you don't have an INT stat to throw a roll on.<br>\
+    But, the road ahead became rather arduous, so we'll test your CON instead.</i>");
+    $('.move-btn1').unbind().removeClass('move-btn1').addClass('move-btn2');
+    //Вторая страница
+    $('.move-btn2').on('click', function(){
+      savingThrow(CON);
+      console.log('DC is 40, your SD is ' + result);
+      $('#story-text').html("A desert is not a place for a casual and happy strolling\
+      <span class='story-throw'> and you are feeling it in all your muscles and bones. Head's\
+      going dizzy, throat is dry and although you're trying your best -> the best you were able to\
+       do is to crawl on your hands and knees... Well, at least you are moving forward!<br>\
+       'Nothing to Fear, for Justice is Here!' - your fellow companion was moved by your\
+        conviction, rushed to your side and with the words 'Conserve your strength for \
+        the dragon, sir!' he pulled you onto his shoulders and began to carry your \
+        <s>sorry ass</s> noble being towards the Cave.<br>\
+        You wonder, how the hell was he able to do that with his STR and CON being D, how the \
+        hell did you know about those D things, but before you were able to completely break \
+        the forth wall, you consciousness faded away.<span>");
+        if(result > 40) {
+          $('.story-throw').html(" but you've been through worse. This intense heat and unsolid ground\
+           are just another obstacles that you will overcome. Nothing more, nothing less. So\
+            you steadied your breath and kept moving forward.<br>\
+            'I knew the hardships of this region won't be able to held you down, sir!' - you\
+             hear the ever-happy rambling of your companion from behind.<br>\
+             'Let's see how _ou _i_l h__d_e _h_ r_a_ t_o___e __e_d' - you heard him speaking\
+              something to you, but the sudden gust of wind made the last segment inaudible.<br>\
+              Most importantly through, you finally see your destination and begin to mentally prepare\
+               yourself for the upcomming battle.").unbind();
+            };
+            $('.move-btn2').unbind().removeClass('move-btn2').addClass('move-btn3');
+              $('.move-btn3').click(thirdEvent);
+      });
+  };
+// Третий ивент
+  function thirdEvent() {
+    $('#story-image').attr("src", "img/againstADragon.jpg");
+    $('#npc-image').attr("src", "img/dragon.jpg");
+    $('#npc-str').html("A");
+    $('#npc-spd').html("B");
+    $('#npc-con').html("EX");
+    $('#npc-lck').html("C");
+    $('#npc-summary').html("A Red Dragon, Bellpheros. Big, bad and just as dangerous as is unsociable.");
+    $('#story-text').html("Long story short, the dragon is here, your companion was anticlimatically killed and eaten\
+     off-screen and now you are facing your adversary all alone<br>\
+     <i>The final battle will play like this:<br>\
+     -First, you choose your tactic for a battle: aggresive, responsive or yolo<br>\
+     -It determines by which stats you are challenging the dragon, the overall potetial damage you could inflict and\
+      the overall chance of you being one-shotted, because in this version, i don't have a HP counter for the MC...but\
+       let's be honest, if a dragon hit you, it'll probably gonna hurt beyond some HP measurments regardless of what\
+        years of RPG and MMORPG gaming might tell you ");
+        $('.aggr, .resp, .yolo').removeClass('invis');
+    $('.move-btn3').unbind().removeClass('move-btn3').addClass('move-btn4 invis');
+    // battle
+    $('.aggr').on('click', function(){
+      var hit = false;
+      var hp = 100;
+      var drSpd = 3;
+      $('.aggr, .resp, .yolo').addClass('invis');
+      $('.move-btn4').removeClass('invis');
+      $('#story-text').html("Both luck and love favors the bold and you are not just\
+      bold but reckless, so it was obvious for all but the dragon that you will just\
+       charge at him...<br>\
+      <span class='1st'></span><br>\
+      <span class='2nd'></span>");
+      while(hit = false || hp > 0 ) {
+        var charSPDThrow = Math.floor((Math.random() * 10) + 1) * SPD;
+        var drSPDThrow = Math.floor((Math.random() * 10) + 1) * drSpd;
+        if (charSPDThrow >= drSPDThrow) {
+        var damage = 15 * STR;
+        hp -= damage;
+        $('.1st').html("In one swift motion you slashed him across the face...");
+        $('.2nd').html("...and in another, you plunge you blade deeper inside of him");
+        }
+        else {
+        savingThrow(LCK);
+        if (result < 81) {
+        hit = true;
+        $('.2nd').html("But it doesn't faze him that much and in one swift motion\
+         he impales you on his tail, ending your short, but heroic struggle");
+        $('.move-btn4').addClass('invis');
+        return hit;
+        }
+        }
+      }
+    });
+  }
   }
