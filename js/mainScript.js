@@ -261,27 +261,134 @@ function GameStart() {
       $('#story-text').html("Both luck and love favors the bold and you are not just\
       bold but reckless, so it was obvious for all but the dragon that you will just\
        charge at him...<br>\
-      <span class='1st'></span><br>\
-      <span class='2nd'></span>");
+       <i>Not the most intelligent thing to do,by any means, but it's a fight or\
+        flight kind of situation and obviously humans can't fly, so it's narrows your\
+         options anyway. So let's see how it goes...in order to defeat a dragon\
+          with this tactic you need to succesfully out-speed him 2-4 times. If\
+           you'll lose in SPD even once, you'll have to pass a LCK saving throw or\
+            else you'll be one-shotted and it's GG. So, it's not recomended to pick\
+             this option unless you have a good SPD and STR parameters. But enough\
+              info, let's see how it went down.</i><br>\
+      <span class='1'></span><br>\
+      <span class='2'></span><br>\
+      <span class='3'></span><br>\
+      <span class='4'></span>");
       while(hit = false || hp > 0 ) {
         var charSPDThrow = Math.floor((Math.random() * 10) + 1) * SPD;
         var drSPDThrow = Math.floor((Math.random() * 10) + 1) * drSpd;
         if (charSPDThrow >= drSPDThrow) {
+        for(var i = 1; hp > 0; i++) {
         var damage = 15 * STR;
         hp -= damage;
-        $('.1st').html("In one swift motion you slashed him across the face...");
-        $('.2nd').html("...and in another, you plunge you blade deeper inside of him");
+        switch (i) {
+          case 1:
+            $('.1').html("In one swift motion you slashed him with your blade...");
+            break;
+          case 2:
+            $('.2').html("...and in another, you plunge you blade deeper inside of him...");
+            break;
+          case 3:
+            $('.3').html("...which, suprisingly, wasn't enough, but still, you managed to pull it off and land another hit...");
+            break;
+          case 4:
+          $('.4').html("...you can only dodge so much, but you managed to do just enough as the next blow to the dragon was the last");
+          break;
+          default:
+            alert('Error');
+        }
+        }
         }
         else {
         savingThrow(LCK);
         if (result < 81) {
         hit = true;
-        $('.2nd').html("But it doesn't faze him that much and in one swift motion\
-         he impales you on his tail, ending your short, but heroic struggle");
+        $('.4').html("<b>But it doesn't faze him that much and in one swift motion\
+         he impales you on his tail, ending your short, but heroic struggle</b>");
         $('.move-btn4').addClass('invis');
         return hit;
         }
         }
+      }
+    });
+    $('.resp').on('click', function(){
+      var hp = 100;
+      var drStr = 4;
+      $('.aggr, .resp, .yolo').addClass('invis');
+      $('.move-btn4').removeClass('invis');
+    });
+    $('.yolo').on('click', function(){
+      var hp = 100;
+      var drStr = 4;
+      $('.aggr, .resp, .yolo').addClass('invis');
+      $('.move-btn4').removeClass('invis');
+    });
+    $('.move-btn4').click(finalEvent);
+  }
+  function finalEvent() {
+    $('#story-image').attr("src", "img/gates.jpg");
+    $('#npc-image').attr("src", "img/blankk.jpg");
+    $('#npc-str').html("?");
+    $('#npc-spd').html("?");
+    $('#npc-con').html("?");
+    $('#npc-lck').html("?");
+    $('#npc-summary').html("Waiting for dat princess to appear, right dawg ?");
+    $('#story-text').html("<i>After the fierce or not so much battle, at last, you are standing\
+     before the very end of your quest which takes the form bigass Golden Door which is\
+      not only fancy looking but have a fancy secret behind it.<br>\
+      Basically, it'll open a rift in space and will pull you towards one of the parallel unviverses\
+       which in this case just means that in the end you will get a random princess.\
+       So, as you may have guessed already, the ending result will be determined purely by Luck. Your's luck, by the way and not your character's.\
+       So gather your astral energy and try to roll something that was worth fighting for</i><br>\
+       <b>The following princess do not represent author's tastes. Like at all. I prefer brunettes. Oops, mild spoilers there. Ok, no more hints.</b>");
+    $('.move-btn4').unbind().removeClass('move-btn4').addClass('move-btn5');
+    $('.move-btn5').on('click', function(){
+      $('.move-btn5').unbind().addClass('invis');
+      var benchmark = new Date();
+      var trueLuck = Math.ceil(benchmark.getMilliseconds() / 10);
+      console.log(trueLuck);
+      if(trueLuck > 90) {
+        $('#story-image').attr("src", "img/final/ExFront.png");
+        $('#npc-image').attr("src", "img/final/ExImg.png");
+        $('#npc-str').html("B");
+        $('#npc-spd').html("A");
+        $('#npc-con').html("A");
+        $('#npc-lck').html("C");
+        $('#npc-summary').html("The genderbent King Arthur from the Fate series. On a horse.");
+        $('#story-text').html("Well, you came for a princess, but got yourself a King and a Goddess in one. Could this be considered lucky ?\
+        Personally, i don't know, but you managed to roll the top price and that's great in itself.");
+      }
+      else if ( trueLuck > 70 && trueLuck < 91) {
+        $('#story-image').attr("src", "img/final/AFront.png");
+        $('#npc-image').attr("src", "img/final/AImg.png");
+        $('#npc-str').html("D");
+        $('#npc-spd').html("B");
+        $('#npc-con').html("D");
+        $('#npc-lck').html("B+");
+        $('#npc-summary').html("A French queen of Louis XVI from 18 century. Still young and a 100% woman in both the fictional work and real life");
+        $('#story-text').html("Somewhat decent result with no surprises or twists, like you know, gonna throw some normal stuff while i'm on it");
+      }
+      else if ( trueLuck > 40 && trueLuck < 71) {
+        $('#story-image').attr("src", "img/final/DFront.png");
+        $('#npc-image').attr("src", "img/final/DImg.png");
+        $('#npc-str').html("A");
+        $('#npc-spd').html("B");
+        $('#npc-con').html("B");
+        $('#npc-lck').html("A");
+        $('#npc-summary').html("A true whatever-floats-your-boat person, who can be either man or woman. Literally");
+        $('#story-text').html("Do you know about the Schrodinger's cat paradox? You never know if the cat is alive or dead, until you open up the box.\
+        Same thing with your 'princess 'basically', the question 'Does she have a dick?' can only be answered with personal...experience.<br>\
+        Still there is a chance and it's better than nothing. Plus, you may have some... flexible tastes...so this result may actually be a total jackpot right?");
+      }
+      else {
+        $('#story-image').attr("src", "img/final/CFront.png");
+        $('#npc-image').attr("src", "img/final/CImg.png");
+        $('#npc-str').html("D");
+        $('#npc-spd').html("B");
+        $('#npc-con').html("D");
+        $('#npc-lck').html("A+");
+        $('#npc-summary').html("A Guy");
+        $('#story-text').html("Well, as they say, it's not gay if it cute right ?<br>\
+        Anyway, you got yourself the worst possible result, so strengthen your luck to avoid traps in future.");
       }
     });
   }
