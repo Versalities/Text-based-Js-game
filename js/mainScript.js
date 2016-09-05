@@ -310,15 +310,43 @@ function GameStart() {
         }
       }
     });
-    $('.resp').on('click', function(){
-      var hp = 100;
-      var drStr = 4;
+    $('.resp').on('click', function() {
       $('.aggr, .resp, .yolo').addClass('invis');
       $('.move-btn4').removeClass('invis');
+      var drSpd = 3;
+      var drStr = 4;
+      var hitcount = 0;
+      var hp = 100;
+      while (hitcount < 3 && hp > 0) {
+      var charSPDThrow = Math.floor((Math.random() * 10) + 1) * SPD;
+      var drSPDThrow = Math.floor((Math.random() * 10) + 1) * drSpd + 10;
+        if (charSPDThrow >= drSPDThrow) {
+          hitcount += 1;
+        }
+        else {
+        savingThrow(CON);
+        var damage = 1000 * drStr / result;
+        console.log ('resulting damage is ' + damage);
+        hp -= damage;
+        }
+        console.log('hitcount is ' + hitcount);
+        console.log('hp is ' + hp);
+        }
+        if (hitcount === 3 && hp > 0) {
+        $('#story-text').html("Long story short, you've won agaisnt a Dragon (Yay!) and\
+        you are ready to collect thy loot (leaving this block unfinished, waiting for writing inspiration to come)")
+        }
+        else {
+        $('#story-text').html("Long story short, you ded (Yay) and\
+        it's GG (leaving this block unfinished, waiting for writing inspiration to come)");
+        $('.move-btn4').addClass('invis');
+        }
     });
     $('.yolo').on('click', function(){
-      var hp = 100;
-      var drStr = 4;
+      $('#story-text').html("Everything becomes much easier if you know for sure how everything will\
+       play out in the end. By being the main protagonist of the classic story, it's obvious that you will\
+        achieve success no matter what. So, right now this option is a easy-win-button until i get my inspiration back<br>\
+        And fot the Dragon...well, you sneezed, the sound from it shaked the cave and a giant rock fell down on poor dragon's head.")
       $('.aggr, .resp, .yolo').addClass('invis');
       $('.move-btn4').removeClass('invis');
     });
