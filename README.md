@@ -12,3 +12,6 @@ Added 2nd event and 1/3 of the third. Almost done with the initially planned con
 
 Version 0.2 - 02.09.2016.
 Modified one of the routes of the 3rd event. Still working on the 2 others. Jumped to the Final Event and worked on it a bit. Need more content and additional styling though.
+
+Version 0.25 - 05.09.2016.
+Some minor additions to js. Overall, the bare minimum is done, now waiting for the inspiration to come in order to style everything more attractively...and to improve some other things.
